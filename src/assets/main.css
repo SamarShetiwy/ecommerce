@@ -62,6 +62,8 @@
   h6 {
     color: var(--heading-color);
     font-family: var(--heading-font);
+    font-weight: bold;
+    
   }
 
   p,

@@ -45,13 +45,37 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
     h1.trending-tittle.center TOP SALLING
     Products    
 
-            //-    BROWSE BY dress STYLE                  
+            //-    BROWSE BY dress STYLE 
+.container.dress-style.bg-custom.mt-5.py-5
+    h1.pt-1.pb-4.center BROWSE BY DRESS STYLE
+    div.p-3.upper-section.row.center
+            .item.item1.col-4
+                h2.px-4.py-4 Casual
+                img(src="../assets/images/dress-style-section/1.png" alt="")
+            .item.item2.col-7
+                h2.px-4.py-4 Formal
+                img(src="../assets/images/dress-style-section/2.png" alt="" style="height: 90%")
+    div.px-3.upper-section.row.center.gap-3
+            .item.item1.col-7
+                h2.px-4.py-4 Party
+                img(src="../assets/images/dress-style-section/3.png" alt="")
+            .item.item2.col-4
+                h2.px-4.py-4 Gym
+                img(src="../assets/images/dress-style-section/4.png" alt="" style="height: 90%")
 
-        
+                //- OUR HAPPY CUSTOMERS
+.div.slider.mt-5
+    Slider
+
+            //-    footer
+div
+    Footer
+
 </template>
-
 <script setup lang="ts">
-import Products from '../components/Products.vue'
+import Products from '../components/Products.vue';
+import Slider from '../components/slider.vue';
+import Footer from '../components/Footer.vue';
 
 </script>
 
@@ -59,9 +83,10 @@ import Products from '../components/Products.vue'
 
 .box-tittle{
 font-size: 64px;
-font-weight: 700;
 line-height: 64px;
 text-align: left;
+font-weight: 900;
+
 }
 .box-btn{
 width:210px;
@@ -96,6 +121,38 @@ color: #FFFFFF;
     color:#000000;
     font-size: 40px;
     font-weight: 700;
+}
+h1{
+    font-weight: 900;
+
+}
+.dress-style{
+    border-radius: 40px;
+}
+.dress-style h1{
+font-size: 48px;
+line-height: 57.6px;
+text-align: center;
+font-weight: 900;
+}
+.item img {
+    width: 100%; 
+    height: auto;
+    border-radius: 20px;
+    position:relative; 
+}
+
+h2{
+    position: absolute;
+    font-family: Satoshi;
+font-size: 36px;
+font-weight: 700;
+line-height: 48.6px;
+text-align: left;
+color: #000000;
+z-index: 100;
+
+
 }
 
 
