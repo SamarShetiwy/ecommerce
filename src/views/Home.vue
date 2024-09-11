@@ -64,12 +64,12 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
                 img(src="../assets/images/dress-style-section/4.png" alt="" style="height: 90%")
 
                 //- OUR HAPPY CUSTOMERS
-.div.slider.mt-5
+div.slider.mt-5
     Slider
 
             //-    footer
-div
-    Footer
+
+Footer
 
 </template>
 <script setup lang="ts">
@@ -98,8 +98,8 @@ background-color: #000000;
 color: #FFFFFF;
 }
 .bx-line{
-  border: 1px solid #0000001A;
-  height: 74px;
+    border: 1px solid #0000001A;
+    height: 74px;
 }
 .hero-bg{
     width: 100%;
@@ -151,9 +151,8 @@ line-height: 48.6px;
 text-align: left;
 color: #000000;
 z-index: 100;
-
-
 }
+
 
 
 

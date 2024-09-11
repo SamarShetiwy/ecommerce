@@ -41,6 +41,8 @@
     color: var(--default-color);
     background-color: var(--background-color);
     font-family: var(--default-font);
+    box-sizing: border-box;
+
   }
   
   a {
