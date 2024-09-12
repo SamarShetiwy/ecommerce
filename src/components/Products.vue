@@ -28,9 +28,7 @@ div.branding-box.d-flex.mt-5.container.gap-3
                 p.card-tittle T-shirt With Tape Details
                 .product-rate.d-flex.flex-column
                     img.card-img-star(src='../assets/images/Frame 10.png')
-                    span.card-span 4.0/5
-div.card-btn.center.mt-5
-    .btn View All              
+                    span.card-span 4.0/5       
 </template>
 
 <script setup>

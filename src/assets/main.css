@@ -4,7 +4,7 @@
   }
   @font-face {
     font-family: 'Integral CF';
-        src: url('./fonts/Mesa\ Grande.ttf') format('opentype'); 
+        src: url('./fonts/Mesa\ Grande.ttf')format('opentype'); 
   }
   *{
     font-family: 'Satoshi', sans-serif;
@@ -65,6 +65,7 @@
     color: var(--heading-color);
     font-family: var(--heading-font);
     font-weight: bold;
+ 
     
   }
 
@@ -89,5 +90,8 @@
   }
   .card-img-star{
     width: fit-content;
+  }
+  ::-webkit-scrollbar {
+    height: 2rem; 
   }
   

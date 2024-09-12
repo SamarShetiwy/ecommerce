@@ -43,7 +43,9 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
 .trending-line
 .trending.mt-5
     h1.trending-tittle.center TOP SALLING
-    Products    
+    Products
+div.card-btn.center.mt-5
+    .btn View All               
 
             //-    BROWSE BY dress STYLE 
 .container.dress-style.bg-custom.mt-5.py-5
@@ -67,9 +69,6 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
 div.slider.mt-5
     Slider
 
-            //-    footer
-
-Footer
 
 </template>
 <script setup lang="ts">

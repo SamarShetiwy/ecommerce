@@ -67,9 +67,10 @@ input{
     background-color: #F0F0F0;
     border:none;
     padding: 12px, 16px, 12px, 16px;
-    color:#00000066
-
+    color:#00000066;
+    border: none;
 }
+
 .form-header{
     border-radius: 62px;
     width: 515px;

@@ -1,14 +1,14 @@
 <template lang="pug">
 div.container.footer.mt-5
-    div.footer-content.d-flex.between.p-5
+    div.footer-content.d-flex.between.px-5
         div.text-start
             span STAY UPTO DATE ABOUT
             br 
             span OUR LATEST OFFERS
-        div.input-icon.d-flex.gap-3.flex-column
-            form.form-footer.d-flex(role="search").bg-custom.gap-5.flex-column.bg-black
+        div.newlestter.d-flex.gap-3.flex-column
+            form.form-footer.d-flex(role="search").gap-2
                 i.bi.bi-envelope
-                input.form-control.bg-custom(type="text" placeholder="Enter your email address" aria-label="text")
+                input.p-0.form-control(type="text" placeholder="Enter your email address" aria-label="text")
             button.btn.btn(type='submit') Subscribe to Newsletter
 div.footer-section.bg-custom.p-5
         div.container.mt-5.d-flex.gap-2
@@ -18,28 +18,28 @@ div.footer-section.bg-custom.p-5
                     p.pargraph We have clothes that suits your style and which you’re proud to wear. From women to men.
                     div.footer-icons-div.mt-5
                         i.media.bi.bi-twitter
-                        i.media.fs.bg-black.fa-facebook-f
+                        i.media.fa-brands.fa-facebook-f.pt-1
                         i.media.bi.bi-instagram
                         i.media.bi.bi-github
-            div.footer-section2.col-2.mt-5
+            div.footer-section2.col-2.mt-5.d-flex.flex-column.gap-1
                 h5.footer-tittle COMPANY
                 p.details About 
                 p.details Features 
                 p.details Works 
                 p.details Career 
-            div.footer-section2.col-2.mt-5
+            div.footer-section2.col-2.mt-5.d-flex.flex-column.gap-1
                 h5.footer-tittle Help
                 p.details Customer Support 
                 p.details Delivery Details 
                 p.details Terms & Conditions 
                 p.details Privacy Policy 
-            div.footer-section2.col-2.mt-5
+            div.footer-section2.col-2.mt-5.d-flex.flex-column.gap-1
                 h5.footer-tittle FAQ
                 p.details Account 
                 p.details Manage Dedivveries 
                 p.details Orders 
                 p.details Payments 
-            div.footer-section2.col-2.mt-5
+            div.footer-section2.col-2.mt-5.d-flex.flex-column.gap-1
                 h5.footer-tittle Resources
                 p.details Free eBooks 
                 p.details Development Tutorial 
@@ -65,13 +65,12 @@ div.footer-section.bg-custom.p-5
 <style lang="css" scoped>
 .footer{
     background-color: #000000;
-    height: 180px;
     border-radius: 20px;
     color:#FFFFFF;
     position: absolute;
     z-index: 100;
-    buttom:2px;
     left: 103px;
+    padding:36px 64px 36px 64px;
 }
 .footer-content{
     color: #FFFFFF;
@@ -87,44 +86,33 @@ font-weight: 900px;
 }
 .form-footer{
     border-radius: 62px;
-    text-align: center;
-    align-items: center;
-    color:#FFFFFF;
+    text-align: start;
+    align-items: start;
+    color:#00000066;
+    padding:12px 60px ;
+    background-color: #FFFFFF;
     
 }
-.input-icon{
-    position: relative;
-}
-.input-icon i{
-    position: absolute;
-    z-index: 100;
-    text-align: center;
-    top: 22%;
-    left: 16px; 
-    transform: translateY(-50%);
-    color:#00000066
-}
 .footer input{
-    background-color: #FFFFFF;
-    color:#000000;
-    padding: 12px 16px;
-    border-radius: 62px;
-    width: 349px;
+    color:#00000066;
+    border: none;
+}
+.footer input a:hover{
+    border: none;
 }
 
 .footer button{
     background-color: #FFFFFF;
     color: #000000;
-    padding: 12px 16px 12px 48px;;
+    padding: 12px 60px ;
     border-radius: 62px;
-    width: 349px;
     box-sizing: border-box;
     
     }
 .footer-section{
     position: relative;
     z-index: 0;
-    top: 150px;
+    top: 135px;
     
 
 }
@@ -154,9 +142,11 @@ font-weight: 900px;
     background-color: #FFFFFF;
     color: #000000;
 }
-.fs{
+.fs {
     color: #FFFFFF;
     background-color: #000000;
+    display: flex;
+
 }
 .line-footer {
     border: 1px solid #0000001A
