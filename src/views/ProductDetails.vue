@@ -9,8 +9,8 @@ div.container
           i.fa-solid.fa-angle-right
           a(href="") T-shirts
 div.container.mt-4
-      .div.row.container-product.d-flex
-            div.col-6.product-img
+      .div.row.container-product.d-flex.gap-3.gap-lg-0.px-3
+            div.col.col-md-6.product-img
                 div.row.gap-1.images
                       div.col-3.d-flex.flex-column.gap-3
                           img.img-fluid(src="../assets/images/products/image 2.png")
@@ -18,7 +18,7 @@ div.container.mt-4
                           img.img-fluid(src="../assets/images/products/image 6.png")
                       div.col-8
                           img.img-fluid(src="../assets/images/products/image 1.png")
-            div.col-6.d-flex.flex-column.gap-1
+            div.col.col-md-6.d-flex.flex-column.gap-1
               h1.capitalize-text.title.heading-font ONE LIFE GRAPHIC T-SHIRT
               div.product-rate.d-flex.gap-2
                   img(src="../assets/images/Frame 10.png")

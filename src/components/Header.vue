@@ -1,38 +1,43 @@
 <template lang="pug">
 div.signup.bg-black
-    div.center.gap-3.offer
-        p.head.mb-0 Sign up and get 20% off to your first order  
-        span.ml-2
-            a.text-white(href="#") Sign Up Now
-div.container.mt-4
-    navbar.navbar.navbar-expand-lg
-        .container-fluid.gap-3
-            router-link(to="/home").navbar-brand 
-                h2 SHOP.CO
-            button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
-                span.navbar-toggler-icon
-            .collapse.navbar-collapse(id="navbarSupportedContent") 
-                ul.navbar-nav.me-auto.mb-2.mb-lg-0
-                    li.nav-item.dropdown
-                        a.nav-link.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
-                        ul.dropdown-menu
-                            li
-                                a.dropdown-item(href="#") Action
-                            li
-                                a.dropdown-item(href="#") Another action
-                    li.nav-item 
-                        a.nav-link.active(aria-current="page" href="#") On Sale 
-                    li.nav-item 
-                        a.nav-link.active(aria-current="page" href="#") New Arrivals 
-                    li.nav-item
-                        a.nav-link.active(aria-current="page" href="#") Brands 
-            form.form-header.d-flex(role="search").bg-custom.gap-1.px-3
-                        i.bi.bi-search
-                        input.form-control.me-2.bg-custom(type="search" placeholder="Search for products..." aria-label="Search")
-            div.center.gap-3      
-                i.bi.bi-cart.w-24.h-24
-                i.bi.bi-person-circle.w-24.h-24
-            
+    div.container.gap-3.offer.d-flex.p-3.justify-content-sm-between.justify-content-center
+        div.d-none.d-md-block 
+        div.center.gap-2.head
+            p.mb-0 Sign up and get 20% off to your first order  
+            span.ml-2
+                a.text-white(href="#") Sign Up Now
+        div.offer-icon.d-none.d-md-block 
+            i.fas.fa-times    
+div.container.mt-4.p-0
+    nav.navbar.container-fluid.gap-lg-4.gap-1.navbar-expand-lg.d-flex.p-3
+        button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        router-link(to="/home" class="navbar-brand")
+          h2 SHOP.CO
+        .collapse.navbar-collapse(id="navbarSupportedContent")
+          ul.navbar-nav.me-auto.mb-2.mb-lg-0.d-flex.gap-2
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
+              ul.dropdown-menu
+                li
+                  a.dropdown-item(href="#") Action
+                li
+                  a.dropdown-item(href="#") Another action
+            li.nav-item
+              a.nav-link.active(aria-current="page" href="#") On Sale
+            li.nav-item
+              a.nav-link.active(aria-current="page" href="#") New Arrivals
+            li.nav-item
+              a.nav-link.active(aria-current="page" href="#") Brands
+        div.d-sm-none.d-flex.align-items-center
+          i.bi.bi-search.me-3
+        form.form-header.d-flex.bg-custom.gap-1.px-3.d-none.d-md-block.d-sm-flex.align-items-center(role="search")
+          i.bi.bi-search.me-2
+          input.form-control.bg-custom.d-none.d-lg-block(type="search" placeholder="Search for products..." aria-label="Search")
+        div.d-sm-flex.align-items-center.gap-3
+          i.bi.bi-cart.w-24.h-24
+          i.bi.bi-person-circle.w-24.h-24
+div.container.line
 </template>
 
 <script setup>
@@ -51,11 +56,19 @@ div.container.mt-4
   text-align: center;
 
 }
-.head{
-    color: #FFFFFF;
+.line{
+  border: 1px solid #0000001A;
 }
+
+.head p,
+.head span,
+.offer-icon {
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+
 .navbar h1{
-    font-weight: 900;
+    
 font-size: 32px;
 line-height: 38.4px;
 text-align: left;
@@ -64,19 +77,31 @@ color: #000000;
 }
 input{
     /* width: 577px; */
-    background-color: #F0F0F0;
+  
     border:none;
-    padding: 12px, 16px, 12px, 16px;
+    padding: 12px 16px 12px 16px;
     color:#00000066;
     border: none;
+    background-color: #F0F0F0;
 }
 
 .form-header{
     border-radius: 62px;
-    width: 515px;
+    padding: 7px 64px ;
+    background-color: #F0F0F0;
+    /* width: 515px; */
     text-align: center;
     align-items: center;
-    color:#00000066
+    color:#00000066;
 }
+
+@media (max-width: 576px) { 
+  .head p,
+  .head span {
+    font-size: 12px;
+  }
+}
+
+
 
 </style>

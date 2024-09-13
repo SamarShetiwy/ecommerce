@@ -4,12 +4,14 @@
   }
   @font-face {
     font-family: 'Integral CF';
-        src: url('./fonts/Mesa\ Grande.ttf')format('opentype'); 
+    src: url('./fonts/Mesa\ Grande.woff') format('woff');
+    src: url('./fonts/Fontspring-DEMO-integralcf-heavy.otf') format('opentype');
+
   }
+  
   *{
     font-family: 'Satoshi', sans-serif;
     font-style: normal!important;
-    border: border-box;
     padding: 0;
     margin: 0;
   }
@@ -41,7 +43,6 @@
     color: var(--default-color);
     background-color: var(--background-color);
     font-family: var(--default-font);
-    box-sizing: border-box;
 
   }
   
@@ -57,15 +58,12 @@
   }
   
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h2
+    {
     color: var(--heading-color);
     font-family: var(--heading-font);
-    font-weight: bold;
- 
+    font-weight: 700;
+    
     
   }
 

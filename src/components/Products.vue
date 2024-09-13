@@ -1,28 +1,28 @@
 <template lang="pug">
-div.branding-box.d-flex.mt-5.container.gap-3
-    .row
-        .card.col-lg-3.col-md-6.col
+div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
+    .row.flex-nowrap 
+        .card.col.col-sm-6.col.col-md-6.col-lg-3
             img.card-img-top(src='../assets/images/products/fdf.png')
             .card-body.text-black
                 p.card-tittle T-shirt With Tape Details
                 .product-rate.d-flex.flex-column
                     img.card-img-star(src='../assets/images/Frame 10.png')
                     span.card-span 4.0/5 
-        .card.col-lg-3.col-md-6.col
+        .card.col.col-sm-6.col-md-6.col-lg-3
             img.card-img-top(src='../assets/images/products/fdf.png')
             .card-body
                 p.card-tittle T-shirt With Tape Details
                 .product-rate.d-flex.flex-column
                     img.card-img-star(src='../assets/images/Frame 10.png')
                     span.card-span 4.0/5 
-        .card.col-lg-3.col-md-6.col
+        .card.col.col-sm-6.col-md-6.col-lg-3
             img.card-img-top(src='../assets/images/products/fdf.png')
             .card-body
                 p.card-tittle T-shirt With Tape Details
                 .product-rate.d-flex.flex-column
                     img.card-img-star(src='../assets/images/Frame 10.png')
                     span.card-span 4.0/5
-        .card.col-lg-3.col-md-6.col
+        .card.col.col-sm-6.col-md-6.col-lg-3
             img.card-img-top(src='../assets/images/products/fdf.png')
             .card-body
                 p.card-tittle T-shirt With Tape Details
