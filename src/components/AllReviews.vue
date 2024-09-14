@@ -92,7 +92,8 @@ div.card-btn.center.mt-5
     flex-basis: 48%;
 }
 .customer.card {
-    flex-grow: 1; 
+    flex-grow: 1;
+    border-radius: 20px; 
 }
 .row{
     flex-wrap: wrap;

@@ -37,7 +37,7 @@ div.container.mt-4.p-0
         div.d-sm-flex.align-items-center.gap-3
           i.bi.bi-cart.w-24.h-24
           i.bi.bi-person-circle.w-24.h-24
-div.container.line
+//- div.container.line
 </template>
 
 <script setup>
