@@ -202,6 +202,10 @@ font-weight: 700px;
         flex-direction: column;
         gap:1rem;
     }
+    .pargraph, details{
+        font-size: 14px;
+    }
+
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
    

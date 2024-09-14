@@ -1,25 +1,26 @@
 <template lang="pug">
 div.container
-      div.pages.d-flex.gap-3.align-items-center.p-3
-          router-link(to="/") home
+      div.pages.d-flex.gap-2.align-items-center.p-3
+          router-link(to="/") Home
           i.fa-solid.fa-angle-right
-          a(href="") shop
+          a(href="") Shop
           i.fa-solid.fa-angle-right
           a(href="") Men
           i.fa-solid.fa-angle-right
           a(href="") T-shirts
 div.container.mt-4
       .div.row.container-product.d-flex.gap-3.gap-lg-0.px-3
-            div.col.col-md-6.product-img
-                div.row.gap-1.images
-                      div.col-3.d-flex.flex-column.gap-3
+            div.col.col-lg-6.product-img
+                div.row.gap-3.gap-sm-1.images
+                      div.image-div.col-4.col-md-4.d-flex.flex-md-column.gap-3
                           img.img-fluid(src="../assets/images/products/image 2.png")
                           img.img-fluid(src="../assets/images/products/image 5.png")
                           img.img-fluid(src="../assets/images/products/image 6.png")
-                      div.col-8
+                      div.col.col-md-7.main-image
                           img.img-fluid(src="../assets/images/products/image 1.png")
-            div.col.col-md-6.d-flex.flex-column.gap-1
-              h1.capitalize-text.title.heading-font ONE LIFE GRAPHIC T-SHIRT
+            div.col.col-lg-6.d-flex.flex-column.gap-1
+              div.heading-font
+                h1.title ONE LIFE GRAPHIC T-SHIRT
               div.product-rate.d-flex.gap-2
                   img(src="../assets/images/Frame 10.png")
                   span 4.5/5
@@ -56,29 +57,29 @@ div.container.mt-4
                       span 0
                       i.bi.bi-dash-lg
                   div.col-7.add-to-cart.center
-                      a(href="") add-to-cart
+                      a(href="") Add To Cart
 
                       //- Rating & Reviews  
-div.container.mt-5.px-5.py-3
-  div.tabs.between
+div.container.mt-0.mt-sm-5.px-sm-5.px-0
+  div.tabs.between.px-2.px-md-5.py-3
       div.tab1 
         span  Product Details  
       div.tab2
         span  Rating & Reviews
       div.tab3 
         span  FAQs
-div.line.line-tabs.container
+  div.line.line-tabs.mx-4.mx-sm-0
                             //- All Reviews
-div.reviews.between.container.mt-5.p-0
-    div.review.d-flex.align-items-center.gap-2
+div.reviews.between.container.mt-sm-5.p-3.p-md-0
+    div.review.d-flex.align-items-center.gap-1.gap-md-2
         h3.mb-0 All Reviews
-        span.num (451)
+        span.mt-1.num (451)
     div.review-choice.d-flex.gap-3
         div.review.bg-custom
           i.fa-solid.fa-sliders
-        div.review.bg-custom
-          span Latest
-          i
+        div.review.latest.bg-custom.d-flex.gap-3.d-none.d-md-block
+          span.pe-2 Latest
+          i.bi.bi-chevron-down
         div.review.review-write
           span Write a Review
 div.container
@@ -118,8 +119,8 @@ font-size: 40px;
 font-weight: 900;
 line-height: 48px;
 text-align: left;
-/* font-family: Integral CF; */
 }
+
 .product-rate span {
   color: #000000;
 }
@@ -152,6 +153,9 @@ color: #FF3333;
 .line{
   border: 1px solid #0000001A;
   color:#0000001A;
+}
+.bi-check{
+  color: #FFFFFF;
 }
 .color{
 width: 37px;
@@ -205,6 +209,9 @@ text-align: left;
   width: 414px;
   padding:2rem 0;
 }
+.tab2 span{
+  color: #000000;
+}
 .line-tabs{
   margin-top:-1.1rem;
 }
@@ -212,18 +219,78 @@ text-align: left;
   padding:16px 20px 16px 20px;
   border-radius:62px ;
 }
-.num{
-  /* margin-top: -1.1rem ; */
-}
+
 .review-write{
-   background-color: #000000;
-   color:#FFFFFF;
-   
+  background-color: #000000;
+  color:#FFFFFF;
+
 }
 .review-write span{
-   color:#FFFFFF;
-   
+  color:#FFFFFF;
 }
+.latest span, i{
+  color: #000000;
+}
+
+@media (max-width: 576px) {
+  .pages a{
+    font-size: 14px;
+  }
+  .price {
+    font-size: 24px;
+}
+.title{
+  font-size: 24px;
+}
+.heading-font{
+  width: 267px;
+}
+  .trending{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .trending-tittle{
+    width: 234px;
+  }
+  .review{
+    padding: 11px 12px ;
+  }
+
+  .tabs{
+    margin: 0 1rem;
+    
+  }
+  .size{
+    padding: 10px 20px;
+  }
+   .size span{
+    font-size: 12px;
+   }
+  }
+  
+  @media (max-width: 768px){
+  .latest{
+    display: none;
+  }
+  .review h3{
+  font-size:20px;
+}
+
+
+  }
+  @media (max-width: 992){
+ 
+  .tab2{
+    width: 123px;
+  }
+  .images {
+    flex-direction:column-reverse; 
+  }
+}
+
+
+
 
 
 </style>
