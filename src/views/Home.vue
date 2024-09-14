@@ -14,12 +14,12 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
                 .info.text-start 
                     span +2,000
                     p High-Quality Products
-                .box-line.d-none.d-md-block       
+                .box-line.d-none.d-sm-block       
                 .info.text-start 
                     span +30,000
                     p Happy Customers
         .col-md-6.col         
-            .hero-img.position-relative.d-flex 
+            .hero-img.position-relative.d-flex
                 img.star1(src="../assets/images/hero-section/Vector.png" alt="")
                 img.hero-bg(src="../assets/images/hero-section/Rectangle 2.png" alt="")
                 img.star2(src="../assets/images/hero-section/Vector.png" alt="")
@@ -27,9 +27,9 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
                 //-    section brand
             
 .brand.bg-black.py-4.px-1
-    .row.brand-box.center.gap-lg-5.gap-2
+    .row.brand-box.center.gap-lg-5.gap-md-3.gap-2.px-1.px-sm-3
             img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/Vector.png" alt="")
-            img.img-brand.col-5.col-md-2(src="../assets/images/brand/Vector (1).png" alt="")
+            img.img-brand2.col-5.col-md-2(src="../assets/images/brand/Vector (1).png" alt="")
             img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/gucci-logo-1 1.png" alt="")
             img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/Group.png" alt="")
             img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/Vector (2).png" alt="")
@@ -38,12 +38,14 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
 
 .trending.mt-5
     h1.trending-tittle.center NEW ARRIVALS
-    Products 
-.trending-line
-.trending.mt-5
+    Products
+div.card-btn.container.center.mt-1
+    .btn View All    
+.trending-line.my-5.mx-3
+.trending.mt-2
     h1.trending-tittle.center TOP SALLING
     Products
-div.card-btn.center.mt-5
+div.card-btn.container.center.mt-1
     .btn View All               
 
             //-    BROWSE BY dress STYLE 
@@ -92,8 +94,8 @@ font-weight: 700;
 .brand-box img{
     max-width:194px;
 }
-.img-brand{
-   width:150px;
+.img-brand2{
+   width:110px;
 }
 
 .box-btn{
@@ -106,16 +108,14 @@ background-color: #000000;
 color: #FFFFFF;
 }
 .box-tittle{
-    font-size: 36px;
-    line-height: 34px;
+    font-size: 62px;
+    line-height: 64px;
 }
 .box-line{
     border: 1px solid #0000001A;
     height: 74px;
 }
-.box-btn[data-v-2dc54a20] {
-    width: 100%;
-}
+
 .hero-bg{
     width: 100%;
     aspect-ratio: 1 /1.1;
@@ -170,7 +170,18 @@ text-align: left;
 color: #000000;
 z-index: 100;
 }
-
+.card-btn{
+    border: 1px solid #0000001A;
+    border-radius: 62px;
+    padding: 10px 54px;
+    width: 218px;
+}
+.trending-line{
+    border: 1px solid #0000001A;
+}
+.box-line{
+    height: 74px;
+}
 @media (max-width: 576px) {
 
 .hero-section{
@@ -184,6 +195,10 @@ z-index: 100;
     height: 100%;
 }
 .info span, p{
+    font-size: 24px;
+}
+
+.info p{
     font-size: 12px;
 }
 .box-info{
@@ -194,6 +209,9 @@ z-index: 100;
 .info{
     flex:1 1 33,33%;
     max-width: 33,33%;
+}
+.hero-bg{
+    margin-top:-4rem;
 }
 
 .dress-style h1{
@@ -213,10 +231,71 @@ z-index: 100;
     top: 1rem;
     right: 10px;
 }
+.box-tittle{
+    font-size: 38px;
+    line-height: 38px;
+}
+.box-btn {
+    width: 100%;
+}
+.box-tittle{
+    font-size: 51px;
+    line-height: 50px;
+}
+.box-tittle{
+    font-size: 36px;
+    line-height: 34px;
+}
+.box-text{
+    font-size:14px;
+}
+.box-line{
+    height: 45px;
+}
+.card-btn{
+    width: 100%;
+}
 }
 
+@media (min-width: 576px) and (max-width: 767.98px){
+    .box-tittle {
+    font-size: 45px;
+    line-height: 45px;
+}
+.info span{
+        font-size: 40px;
+    }
+    .info p{
+        font-size: 11px;
+    }
+    .hero-section{
+        padding-bottom: 2rem;
+    }
 
-@media (min-width: 575.98px) and (max-width: 992px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+    .hero-bg {
+        aspect-ratio: 1 / 1.3;
+    }
+    .box-tittle {
+    font-size: 29px;
+    line-height: 27px;
+}
+    .info span{
+        font-size: 20px;
+    }
+    .info p{
+        font-size: 10px;
+    }
+    .box-line {
+        height: 45px;
+}
+
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
 .box-tittle{
     font-size: 38px;
 }
@@ -231,13 +310,26 @@ z-index: 100;
 .item img{
     height: 100%;
 }
-/* div .row{
-    display: flex;
-    flex-direction: column;
-} */
+.box-tittle {
+    font-size: 37px;
+    line-height: 50px;
+
 }
+.info span, p{
+    font-size: 25px;
+}
+p{
+    font-size: 15px;
+}
+.hero-bg {
+    aspect-ratio: 1 / 1.1;
+    width: 100%;
 
-
+}
+.box-line{
+    height: 45px;
+}
+}
 
 
 </style>
