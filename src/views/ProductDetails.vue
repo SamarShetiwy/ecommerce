@@ -92,7 +92,7 @@ div.container
 
 <script setup>
 import AllReviews from  '../components/AllReviews.vue';
-import products from  '../components/products.vue';
+import Products from '@/components/Products.vue';
 
 </script>
 
