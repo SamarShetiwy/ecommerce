@@ -13,12 +13,12 @@ div.container.p-0
         div.logo.d-flex.gap-2.center
           button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
             span.navbar-toggler-icon
-          router-link(to="/home" class="navbar-brand")
+          router-link(to="/" class="navbar-brand")
             h1.pb-0 SHOP.CO
-        .collapse.navbar-collapse(id="navbarSupportedContent")
-          ul.navbar-nav.me-auto.mb-2.mb-lg-0.d-flex.gap-2
+        .collapse.navbar-collapse(id="navbarSupportedContent").center
+          ul.navbar-nav.mb-2.mb-lg-0.d-flex
             li.nav-item.dropdown
-              a.nav-link.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
+              a.nav-link.dropdown-toggle(href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
               ul.dropdown-menu
                 li
                   a.dropdown-item(href="#") Action
@@ -30,14 +30,14 @@ div.container.p-0
               a.nav-link.active(aria-current="page" href="#") New Arrivals
             li.nav-item
               a.nav-link.active(aria-current="page" href="#") Brands
-        div.d-flex.bg-custom.justify-content-center.text-align-center
-          i.bi.bi-search.w-24.h-24
-          form.form-header.d-flex.bg-custom.gap-1.px-3.d-none.d-md-block.d-sm-flex.align-items-center(role="search")
-              input.form-control.bg-custom.d-none.d-lg-block(type="search" placeholder="Search for products..." aria-label="Search")
+        div.form-group.has-search.bg-custom.d-none.d-md-block.px-3
+            span
+              i.bi.bi-search.input-group-text
+            input(type="text" class="form-control" placeholder="Search")
         div.icons-header.center.gap-2.gap-md-3
-          i.bi.bi-search.w-24.h-24.d-block.d-md-none
-          i.bi.bi-cart.w-24.h-24
-          i.bi.bi-person-circle.w-24.h-24
+              i.bi.bi-search.w-24.h-24.d-block.d-md-none
+              i.bi.bi-cart.w-24.h-24
+              i.bi.bi-person-circle.w-24.h-24
 //- div.container.line
 </template>
 
@@ -60,13 +60,19 @@ div.container.p-0
 .line{
   border: 1px solid #0000001A;
 }
+.navbar-brand h1{
+  font-size: 32px;
+}
+.nav-item a{
+  font-size: 16px;
+}
 .navbar-toggler{
   border: none;
   outline: none;
 }
 .icons-header i {
-   color:#000000;
-   font-weight: bold;
+  color:#000000;
+  font-weight: bold;
    
 }
 
@@ -85,25 +91,44 @@ text-align: left;
 color: #000000;
 
 }
-input{
-    /* width: 577px; */
-  
-    border:none;
-    padding: 12px 16px 12px 16px;
-    color:#00000066;
+
+.has-search .form-control {
+    padding-left: 2.5rem;
+    background-color:#F0F0F0;
+
+}
+.form-control{
     border: none;
+    padding: 10px;
     background-color: #F0F0F0;
+    color: #000;
+    border-radius: 64px;
+}
+.form-group{
+  border-radius:64px;
+  background-color: #F0F0F0;
+  
+
+}
+.has-search{
+  width: 500px;
+  background-color:#F0F0F0;
+  border-radius:64px;
+}
+.input-group-text{
+    position: absolute;
+    z-index: 2;
+    display: block;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    pointer-events: none;
+    color: #00000066;
+    background-color:#F0F0F0;
 }
 
-.form-header{
-    border-radius: 62px;
-    padding: 7px 64px ;
-    background-color: #F0F0F0;
-    /* width: 515px; */
-    text-align: center;
-    align-items: center;
-    color:#00000066;
-}
 
 @media (max-width: 576px) { 
   .head p,
@@ -118,8 +143,17 @@ input{
   }
 }
 
-@media (max-width: 768px){
-
+@media(min-width: 768px) and (max-width: 991.98px){
+  .has-search{
+     width: 300px;
+  }
+    
+}
+@media(min-width: 992px) and (max-width: 1199.98px){
+  .has-search{
+     width: 250px;
+  }
+    
 }
 
 

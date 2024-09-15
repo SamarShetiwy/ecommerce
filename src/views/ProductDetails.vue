@@ -11,8 +11,8 @@ div.container
 div.container.mt-4
       .div.row.container-product.d-flex.gap-3.gap-lg-0.px-3
             div.col.col-lg-6.product-img
-                div.row.gap-3.gap-sm-1.images
-                      div.image-div.col-4.col-md-4.d-flex.flex-md-column.gap-3
+                div.row.gap-3.gap-xl-0.images.d-flex-column.d-xl-flex
+                      div.image-div.col-4.col-md-4.d-flex.flex-xl-column.gap-3
                           img.img-fluid(src="../assets/images/products/image 2.png")
                           img.img-fluid(src="../assets/images/products/image 5.png")
                           img.img-fluid(src="../assets/images/products/image 6.png")
@@ -20,7 +20,7 @@ div.container.mt-4
                           img.img-fluid(src="../assets/images/products/image 1.png")
             div.col.col-lg-6.d-flex.flex-column.gap-1
               div.heading-font
-                h1.title ONE LIFE GRAPHIC T-SHIRT
+                h1.h1.title ONE LIFE GRAPHIC T-SHIRT
               div.product-rate.d-flex.gap-2
                   img(src="../assets/images/Frame 10.png")
                   span 4.5/5
@@ -105,14 +105,25 @@ import products from  '../components/products.vue';
 .pages{
   color:#00000099;
 }
+.title{
+  font-size:34px;
+}
+/* .container-product .col{
+  flex: 1 1 100%;
+  gap:2rem;
+} */
 .images{
 
   height: 100%;
+}
+.main-image{
+  width: 65%;
 }
 .img-fluid {
     max-width: 100%; 
     display: block;
     height: 100%;
+    aspect-ratio: 1 / 1;
   }
 .tittle{
 font-size: 40px;
@@ -264,9 +275,11 @@ text-align: left;
   .size{
     padding: 10px 20px;
   }
-   .size span{
+  .size span{
     font-size: 12px;
-   }
+  }
+  
+
   }
   
   @media (max-width: 768px){
@@ -277,19 +290,34 @@ text-align: left;
   font-size:20px;
 }
 
+.images {
+  flex-direction: column-reverse;
+}
+.main-image{
+  width: 100%;
+}
 
   }
   @media (max-width: 992){
- 
+   
   .tab2{
     width: 123px;
   }
-  .images {
-    flex-direction:column-reverse; 
-  }
+  .main-image{
+  width: 100%;
 }
 
+  }
 
+  @media (max-width: 1199.98px){
+    .images {
+  flex-direction: column-reverse;
+}
+
+.main-image{
+  width: 100%;
+}
+  }
 
 
 

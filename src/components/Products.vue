@@ -2,7 +2,8 @@
 div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
     .row.flex-nowrap 
         .card.col-3
-            img.card-img-top(src='../assets/images/products/Frame 32.png')
+            router-link(to="/product")
+                img.card-img-top(src='../assets/images/products/Frame 32.png')
             .card-body.text-black
                 p.card-tittle Polo with Contrast Trims
                 .product-rate.d-flex.gap-2
@@ -14,7 +15,8 @@ div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
                     div.price-circle
                         span.price3 -20% 
         .card.col-3
-            img.card-img-top(src='../assets/images/products/Frame 33 (1).png')
+            router-link(to="/product")
+                img.card-img-top(src='../assets/images/products/Frame 33 (1).png')
             .card-body
                 p.card-tittle Gradient Graphic T-shirt
                 .product-rate.d-flex.gap-2
@@ -23,7 +25,8 @@ div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
                 div.d-flex.gap-2.align-items-center
                     span.price1 $145
         .card.col-3
-            img.card-img-top(src='../assets/images/products/Frame 34.png')
+            router-link(to="/product")
+                img.card-img-top(src='../assets/images/products/Frame 34.png')
             .card-body
                 p.card-tittle Polo with Tipping Details
                 .product-rate.d-flex.gap-2
@@ -32,7 +35,8 @@ div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
                 div.d-flex.gap-2.align-items-center
                     span.price1 $180
         .card.col-3
-            img.card-img-top(src='../assets/images/products/Frame 38.png')
+            router-link(to="/product")
+                img.card-img-top(src='../assets/images/products/Frame 38.png')
             .card-body
                 p.card-tittle Black Striped T-shirt
                 .product-rate.d-flex.gap-2
@@ -60,7 +64,9 @@ div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
     max-width: 295px;
 }
 .card-tittle{
-    color: black; 
+    color: black;
+    font-size: 20px;
+    font-weight: 700; 
 }
 .card-span{
     font-size:14px;

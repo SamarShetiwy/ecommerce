@@ -1,9 +1,10 @@
 <template lang="pug">
+div.container.line
 div.container
     div.pages.d-flex.gap-3.align-items-center.py-3
         router-link.active(to="/") Home
         i.fa-solid.fa-angle-right
-        a(href="") cart
+        a(href="") Cart
 div.container
     h2.mb-4 YOUR CART
 div.container.mb-5
@@ -71,7 +72,7 @@ div.container.mb-5
             
     div.cart-products.col.col-lg-4.p-3
       div
-        h3 Order Summary
+        h3.h3 Order Summary
         div.order-Summary.mt-4.d-flex.flex-column.gap-2
           div.d-flex.between.order
             p.mb-0 Subtotal
@@ -107,6 +108,9 @@ div.container.mb-5
 </script>
     
 <style scoped>
+.line{
+  border: 1px solid #0000001A;
+}
 .pages router-link, a{
   color: inherit;
   cursor: pointer;
@@ -130,6 +134,9 @@ div.container.mb-5
 img{
   width: 124px;
 }
+.h3{
+  font-weight: 700;
+}
 
 .cart-products{
   border: 1px solid #0000001A;
@@ -143,6 +150,7 @@ img{
 }
 h5, .cart-price span{
   color: #000000;
+  font-weight: 700;
 }
 .order span{
   color: #000000;

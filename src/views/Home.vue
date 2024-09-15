@@ -1,6 +1,6 @@
 <template lang="pug">
 div.hero-section-parent.bg-custom.d-flex-gap-5
-    .hero-section.container.mt-md-5.d-flex.pt-md-3.gap-5.pt-0.mt-1
+    .hero-section.container.d-flex.pt-md-3.gap-5.pt-0.mt-1
         .col-md-6.col.pt-5.d-flex.flex-column.gap-5
             .hero-box.d-flex.flex-column.gap-3
                 h1.box-tittle FIND CLOTHES THAT MATCHES YOUR STYLE
