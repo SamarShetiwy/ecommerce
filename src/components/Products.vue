@@ -1,65 +1,32 @@
 <template lang="pug">
-div.branding-box.d-flex.mt-5.container.gap-3.overflow-scroll
-    .row.flex-nowrap 
-        .card.col-3
-            router-link(:to="`/product/{product?.id}`")
-                img.card-img-top(:src="product?.image")
-            .card-body.text-black
-                p.card-tittle {{product?.title}}
-                .product-rate.d-flex.gap-2
-                    img.card-img-star(src='../assets/images/Frame 10.png')
-                    span.card-span  {{product?.Rating.rate}}
-                div.d-flex.gap-2.align-items-center
-                    span.price1 $ {{product?.price}}
-                    span.price2 {{ (product?.price * 0.20).toFixed(2) }} 
-                    div.price-circle
-                        span.price3 -20%                 
-
-        //- .card.col-3
-        //-     router-link(to="/product")
-        //-         img.card-img-top(src='../assets/images/products/Frame 33 (1).png')
-        //-     .card-body
-        //-         p.card-tittle Gradient Graphic T-shirt
-        //-         .product-rate.d-flex.gap-2
-        //-             img.card-img-star(src='../assets/images/Frame 10.png')
-        //-             span.card-span 3.5/5
-        //-         div.d-flex.gap-2.align-items-center
-        //-             span.price1 $145
-        //- .card.col-3
-        //-     router-link(to="/product")
-        //-         img.card-img-top(src='../assets/images/products/Frame 34.png')
-        //-     .card-body
-        //-         p.card-tittle Polo with Tipping Details
-        //-         .product-rate.d-flex.gap-2
-        //-             img.card-img-star(src='../assets/images/Frame 10.png')
-        //-             span.card-span 4.0/5
-        //-         div.d-flex.gap-2.align-items-center
-        //-             span.price1 $180
-        //- .card.col-3
-        //-     router-link(to="/product")
-        //-         img.card-img-top(src='../assets/images/products/Frame 38.png')
-        //-     .card-body
-        //-         p.card-tittle Black Striped T-shirt
-        //-         .product-rate.d-flex.gap-2
-        //-             img.card-img-star(src='../assets/images/Frame 10.png')
-        //-             span.card-span 5.0/5
-        //-         div.d-flex.gap-2.align-items-center
-        //-             span.price1 $120
-        //-             span.price2 $160
-        //-             div.price-circle
-        //-                 span.price3 -50%        
+.card.col.col-md-3.col-lg-3.mt-2
+    div(v-if='product')  
+        router-link(:to="`/product/${product.id}`")
+            img.card-img-top(:src="product?.image")
+        .card-body.text-black
+            p.card-tittle {{product?.title}}
+            .product-rate.d-flex.gap-2
+                img.card-img-star(src='../assets/images/Frame 10.png')
+                span.card-span  {{product?.rating.rate}}
+            div.d-flex.gap-2.align-items-center
+                span.price1 ${{product?.price}}
+                span.price2 {{ (product?.price * 0.20).toFixed(2) }}
+                div.price-circle
+                    span.price3 -20%                     
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 
 import { defineProps } from 'vue';
+import type {DataProduct} from '../api/api'
 
 const props = defineProps({
     products: Array,
     product: Object
-
 });
+// const props = defineProps<{ products: any[] }>();
+
 </script>
 
 <style lang="css" scoped>
@@ -68,13 +35,19 @@ const props = defineProps({
     border: none;
 }
 .card-img-top{
+    /* border-radius: 1rem;
+    max-width: 295px; */
     border-radius: 1rem;
-    max-width: 295px;
+    width: 100%;
+    max-width: 170px;
+    aspect-ratio: 2 / 2;
 }
 .card-tittle{
     color: black;
     font-size: 20px;
     font-weight: 700; 
+    /* ----------- */
+    height: 3rem;
 }
 .card-span{
     font-size:14px;

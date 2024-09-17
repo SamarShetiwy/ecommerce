@@ -38,15 +38,19 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
 
 .trending.mt-5
     h1.trending-tittle.center NEW ARRIVALS
-    Products
+    div.branding-box.d-flex.mt-5.container.gap-3
+        .row
+            Products(v-for=" product in products" :key="product.id" :product="product")
 div.card-btn.container.center.mt-1
     button.btn View All    
 .trending-line.my-5.mx-3
 .trending.mt-2
     h1.trending-tittle.center TOP SALLING
-    Products(v-for="(product) in products" :key="product?.id")
+    div.branding-box.d-flex.mt-5.container.gap-3
+        .row
+            Products(v-for=" product in sortedProducts.slice(1,5)" :key="product.id" :product="product")
 .container.center.gap-2.my-3
-    Pagination
+    //- Pagination
 
 div.card-btn.container.center.mt-1
     button.btn View All               
@@ -79,26 +83,32 @@ div.slider.mt-5
 import Products from '../components/Products.vue';
 import Slider from '../components/slider.vue';
 import Pagination from '../components/Pagination.vue';
-import { ref , onMounted } from 'vue';
+import { ref , onMounted ,computed} from 'vue';
+import type {DataProduct} from '../api/api'
 
 
 const products =ref([]);
 
+
 async function getAllProducts() {
   try {
     const response=await fetch('https://fakestoreapi.com/products');
-    const data=await response.json();
-    products.value=data;
+    const data= await response.json();
+    products.value = data;
     console.log(products.value);
-    // console.log(data[0].title);
-
   } catch(error) {
     console.error(error);
   }
 }
+
+const sortedProducts = computed(() => {
+  return products.value.sort((a, b) => b.rate - a.rate);
+});
+
 onMounted(() => {
     getAllProducts();
 })
+
 
 
 </script>
