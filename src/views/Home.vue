@@ -5,7 +5,7 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
             .hero-box.d-flex.flex-column.gap-3
                 h1.box-tittle FIND CLOTHES THAT MATCHES YOUR STYLE
                 p.box-text Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
-                btn.box-btn.center  Shop Now
+                button.btn.box-btn.center  Shop Now
             .box-info.d-flex.align-items-start.gap-3
                 .info.text-start 
                     span +200
@@ -40,13 +40,16 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
     h1.trending-tittle.center NEW ARRIVALS
     Products
 div.card-btn.container.center.mt-1
-    .btn View All    
+    button.btn View All    
 .trending-line.my-5.mx-3
 .trending.mt-2
     h1.trending-tittle.center TOP SALLING
-    Products
+    Products(v-for="(product) in products" :key="product?.id")
+.container.center.gap-2.my-3
+    Pagination
+
 div.card-btn.container.center.mt-1
-    .btn View All               
+    button.btn View All               
 
             //-    BROWSE BY dress STYLE 
 .container.dress-style.bg-custom.mt-5.py-5.center.flex-column
@@ -75,7 +78,28 @@ div.slider.mt-5
 <script setup lang="ts">
 import Products from '../components/Products.vue';
 import Slider from '../components/slider.vue';
-import Footer from '../components/Footer.vue';
+import Pagination from '../components/Pagination.vue';
+import { ref , onMounted } from 'vue';
+
+
+const products =ref([]);
+
+async function getAllProducts() {
+  try {
+    const response=await fetch('https://fakestoreapi.com/products');
+    const data=await response.json();
+    products.value=data;
+    console.log(products.value);
+    // console.log(data[0].title);
+
+  } catch(error) {
+    console.error(error);
+  }
+}
+onMounted(() => {
+    getAllProducts();
+})
+
 
 </script>
 
@@ -159,10 +183,13 @@ font-weight: 700;
     border-radius: 20px;
     position:relative; 
 }
-
+.paginate{
+    border: #000000 solid 2px;
+    border-radius: 20px;
+    padding:0.2rem  0.6rem;
+}
 h2{
     position: absolute;
-    font-family: Satoshi;
 font-size: 36px;
 font-weight: 700;
 line-height: 48.6px;
