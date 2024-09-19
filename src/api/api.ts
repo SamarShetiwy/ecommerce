@@ -1,5 +1,5 @@
 
- export interface DataProduct {
+export interface DataProduct {
     id: number;
     title: string;
     price: number;
@@ -8,6 +8,11 @@
         rate: number;
         count: number;
     };
-    productData: object,
-    SingleProduct :object
+    category: string; 
+    description: string; 
 }
+
+ export interface CartItem {
+    product: DataProduct;
+    quantity: number;
+  }

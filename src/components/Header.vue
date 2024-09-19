@@ -34,19 +34,34 @@ div.container.p-0
             span
               i.bi.bi-search.input-group-text
             input(type="text" class="form-control" placeholder="Search")
-        div.icons-header.center.gap-2.gap-md-3
+        div.icons-header.center.gap-2.gap-md-2
               i.bi.bi-search.w-24.h-24.d-block.d-md-none
-              i.bi.bi-cart.w-24.h-24
+              router-link(to="/Cart")
+                  div.d-flex.flex-column.mb-0.cart
+                    span.text-red.absolute {{totalQuantity}}
+                    i.bi.bi-cart.w-24.h-24 
               i.bi.bi-person-circle.w-24.h-24
 //- div.container.line
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useCartStore } from '../stores/cartStore';
+import { computed} from 'vue';
+
+const cartStore = useCartStore();
+
+const totalQuantity = computed(() => {
+  return cartStore.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+});
+
+
 
 </script>
 
 <style lang="css" scoped>
-
+.text-red {
+  color: red;
+}
 .signup {
   height: 38px;
   margin: 0 ;
@@ -127,6 +142,15 @@ color: #000000;
     pointer-events: none;
     color: #00000066;
     background-color:#F0F0F0;
+}
+.cart{
+  cursor: pointer;
+  position: relative;
+}
+
+.cart span{
+  position: absolute;
+  top:-16px;
 }
 
 

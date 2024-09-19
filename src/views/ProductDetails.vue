@@ -1,35 +1,36 @@
 <template lang="pug">
 div.container
-      div.pages.d-flex.gap-2.align-items-center.p-3
-          router-link(to="/") Home
-          i.fa-solid.fa-angle-right
-          a(href="") Shop
-          i.fa-solid.fa-angle-right
-          a(href="") Men
-          i.fa-solid.fa-angle-right
-          a(href="") T-shirts
+    div.d-flex.gap-3(v-if='SingleProduct') 
+        div.pages.d-flex.gap-2.align-items-center.p-3
+              router-link(to="/") Home
+              i.fa-solid.fa-angle-right
+              a(href="") Shop
+              i.fa-solid.fa-angle-right
+              a(href="") {{ SingleProduct?.category || 'Loading...' }}
+              i.fa-solid.fa-angle-right
+              a(href="") {{SingleProduct?.title}}
 div.container.mt-4
       .div.row.container-product.d-flex.gap-3.gap-lg-0.px-3
             div.col.col-lg-6.product-img
                 div.row.gap-3.gap-xl-0.images.d-flex-column.d-xl-flex
                       div.image-div.col-4.col-md-4.d-flex.flex-xl-column.gap-3
-                          img.img-fluid(src="../assets/images/products/image 2.png")
-                          img.img-fluid(src="../assets/images/products/image 5.png")
-                          img.img-fluid(src="../assets/images/products/image 6.png")
+                          img.img-fluid(:src="SingleProduct?.image")
+                          img.img-fluid(:src="SingleProduct?.image")
+                          img.img-fluid(:src="SingleProduct?.image")
                       div.col.col-md-7.main-image
-                          img.img-fluid(src="../assets/images/products/image 1.png")
+                          img.img-fluid(:src="SingleProduct?.image")
             div.col.col-lg-6.d-flex.flex-column.gap-1
               div.heading-font
-                h1.h1.title ONE LIFE GRAPHIC T-SHIRT
+                h1.h1.title {{SingleProduct?.title}}
               div.product-rate.d-flex.gap-2
                   img(src="../assets/images/Frame 10.png")
                   span 4.5/5
               div.d-flex.gap-2.align-items-center
-                  span.price1 $260
-                  span.price2 $300
+                  span.price1 ${{SingleProduct?.price}}
+                  span.price2 ${{(SingleProduct?.price * 0.20).toFixed(2) }}
                   div.price-circle
                     span.price3 -40%
-              p This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.    
+              p {{SingleProduct?.description}}
               div.line
               div.d-flex.flex-column.gap-2.py-2
                   span Select Colors
@@ -53,11 +54,11 @@ div.container.mt-4
               div.line            
               div.quantity.row.d-flex.gap-4.mt-3
                   div.counter.between.bg-custom.col-4
-                      i.bi.bi-plus-lg
-                      span 0
-                      i.bi.bi-dash-lg
+                      i.bi.bi-plus-lg(@click="plusQuantity()")
+                      span {{ quantity }}
+                      i.bi.bi-dash-lg(@click="minusQuantity()")
                   div.col-7.add-to-cart.center
-                      a(href="") Add To Cart
+                      a(@click="addToCart") Add To Cart
 
                       //- Rating & Reviews  
 div.container.mt-0.mt-sm-5.px-sm-5.px-0
@@ -90,9 +91,58 @@ div.container
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import AllReviews from  '../components/AllReviews.vue';
 import Products from '../components/Products.vue';
+import {useRoute} from 'vue-router';
+import {onMounted, ref} from 'vue';
+import type { DataProduct } from '../api/api';
+import { useCartStore } from '../stores/cartStore';
+
+
+const SingleProduct = ref<DataProduct | null>(null);
+const route =useRoute();
+const productID =route.params.id;
+const cartStore = useCartStore();
+const quantity =ref(1);
+
+
+async function  getSingleProduct(productID){
+  try {
+    const response =await fetch(`https://fakestoreapi.com/products/${productID}`);
+    const data: DataProduct = await response.json();
+    SingleProduct.value=data;
+    console.log(SingleProduct.value.title); 
+    console.log(SingleProduct.value.id); 
+  }catch(error) {
+    console.log('>>>>>> single product',error)
+  }
+}
+
+onMounted(() => {
+  getSingleProduct(productID);
+  console.log('Cart items:', cartStore.cartItems);
+
+})
+
+function plusQuantity() {
+  quantity.value++;
+  console.log('Quantity after decrement:', quantity.value);
+}
+
+function minusQuantity() {
+  if (quantity.value > 1) {
+    quantity.value--;
+  }
+}
+
+function addToCart() {
+  if (SingleProduct.value) {
+    console.log('>>>>>>>>>>>>>>:', cartStore.cartItems);
+    cartStore.addToCart(SingleProduct.value, quantity.value);
+    console.log('LocalStorage ', localStorage.getItem('pinia'));
+  }
+}
 
 </script>
 
@@ -208,8 +258,9 @@ font-size: 16px;
 font-weight: 500;
 line-height: 21.6px;
 text-align: left;
-
+cursor: pointer;
 }
+
 .tabs{
   padding: 0 5rem;
   cursor: pointer;

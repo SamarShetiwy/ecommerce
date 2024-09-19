@@ -18,7 +18,7 @@
 <script setup lang="ts">
 
 
-import { defineProps } from 'vue';
+// import { defineProps } from 'vue';
 import type {DataProduct} from '../api/api'
 
 const props = defineProps({
