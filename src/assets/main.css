@@ -25,18 +25,16 @@
     --background-color: #ffffff; /* Background color for the entire website, including individual sections */
     --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
     --heading-color: #000000; /* Color for headings, subheadings and title throughout the website */
-    --accent-color: #F07F23; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --accent-color: #0d6efd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
     --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
     --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
   }
 
   :root {
     --nav-color: #444444;  /* The default color of the main navmenu links */
-    --nav-hover-color: #F07F23; /* Applied to main navmenu links when they are hovered over or active */
+    --nav-hover-color: #444444; /* Applied to main navmenu links when they are hovered over or active */
     --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
     --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-    --nav-dropdown-color: #b63838; /* Used for navigation links of the dropdown items in the navigation menu. */
-    --nav-dropdown-hover-color: #1bbca3; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
   }
 
   body {
@@ -46,17 +44,39 @@
 
   }
   
-  a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
-  a:hover {
-    color: color-mix(in srgb, var(--accent-color), transparent 25%);
-    text-decoration: none;
-  }
-  
+
+a, button, .card-btn {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+}
+.nav-item:hover {
+  color: var(--contrast-color);
+  transform: scale(1.1); 
+  background-color: var(--accent-color);
+}
+.size:hover{
+  color: var(--contrast-color);
+  transform: scale(1.1); 
+  background-color: var(--accent-color);
+}
+
+button:hover, .c:hover {
+  color: var(--contrast-color);
+  transform: scale(1.1); 
+  background-color: var(--accent-color);
+
+}
+
+input:active,
+input:focus-visible {
+  outline: none; 
+  border: none;
+  box-shadow: none;
+}
   h1,
   h2
     {
@@ -90,4 +110,4 @@
   ::-webkit-scrollbar {
     height: 2rem; 
   }
-  
+

@@ -38,21 +38,21 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
 
 .trending.mt-5
     h1.trending-tittle.center NEW ARRIVALS
-    div.branding-box.d-flex.mt-5.container.gap-3
-        .row
-            Products(v-for=" product in products" :key="product.id" :product="product")
-div.card-btn.container.center.mt-1
+    div.d-flex.mt-5.container.gap-3
+        .row.center.text-start.branding-box
+            Products(v-for=" product in paginatedProducts" :key="product.id" :product="product")
+.container.center.gap-2.my-3
+    Pagination(:current-page="currentPage" :total-products="totalProducts" @update:currentPage="handlePageChange") 
+div.card-btn.container.center.mt-5
     button.btn View All    
 .trending-line.my-5.mx-3
 .trending.mt-2
     h1.trending-tittle.center TOP SALLING
     div.branding-box.d-flex.mt-5.container.gap-3
-        .row
+        .row.center.text-start
             Products(v-for=" product in sortedProducts.slice(1,5)" :key="product.id" :product="product")
-.container.center.gap-2.my-3
-    //- Pagination
 
-div.card-btn.container.center.mt-1
+div.card-btn.container.center.mt-5
     button.btn View All               
 
             //-    BROWSE BY dress STYLE 
@@ -60,17 +60,17 @@ div.card-btn.container.center.mt-1
     h1.pt-1.pb-4 BROWSE BY DRESS STYLE
     div.py-0.p-sm-3.upper-section.row.center.gap-3
             .item.item1.col-sm-4.col-12
-                h2.px-4.py-md-3.py-0 Casual
+                h4.px-4.py-md-3.py-0 {{ categories[2] }}
                 img(src="../assets/images/dress-style-section/1.png" alt="")
             .item.item2.col-sm-7.col-12
-                h2.px-4.py-md-3.py-0 Formal
+                h4.px-4.py-md-3.py-0 {{ categories[0] }}
                 img(src="../assets/images/dress-style-section/2.png" alt="" style="height: 90%")
     div.px-0.px-sm-3.upper-section.row.center.gap-3
             .item.item1.col-sm-7.col-12
-                h2.px-4.py-md-3.py-0 Party
+                h4.px-4.py-md-3.py-0 {{ categories[3] }}
                 img(src="../assets/images/dress-style-section/3.png" alt="")
             .item.item2.col-sm-4.col-12
-                h2.px-4.py-md-3.py-0 Gym
+                h4.px-4.py-md-3.py-0 {{ categories[2] }}
                 img(src="../assets/images/dress-style-section/4.png" alt="" style="height: 90%")
 
                 //- OUR HAPPY CUSTOMERS
@@ -88,28 +88,54 @@ import type {DataProduct} from '../api/api'
 
 
 const products =ref([]);
+const currentPage = ref<number>(1);
+const itemsPerPage = 4; 
+const totalProducts = computed(() => products.value.length);
+const categories =ref([]);
+
 
 
 async function getAllProducts() {
+    try {
+        const response=await fetch('https://fakestoreapi.com/products');
+        const data= await response.json();
+        products.value = data;
+        // console.log(products.value);
+    } catch(error) {
+    console.error(error);
+    }
+}
+
+const paginatedProducts = computed(() => {
+  const startIndex = (currentPage.value - 1) * itemsPerPage;
+    return products.value.slice(startIndex, startIndex + itemsPerPage);
+});
+
+const handlePageChange = (page: number) => {
+    // console.log(page);
+    currentPage.value = +page;
+};
+
+const sortedProducts = computed(() => {
+    return products.value.sort((a, b) => b.rate - a.rate);
+});
+
+
+async function getCategories() {
   try {
-    const response=await fetch('https://fakestoreapi.com/products');
-    const data= await response.json();
-    products.value = data;
-    console.log(products.value);
-  } catch(error) {
+    const response = await fetch('https://fakestoreapi.com/products/categories');
+    const data = await response.json();
+    categories.value = data;
+    // console.log(categories.value);
+  } catch (error) {
     console.error(error);
   }
 }
 
-const sortedProducts = computed(() => {
-  return products.value.sort((a, b) => b.rate - a.rate);
-});
-
 onMounted(() => {
     getAllProducts();
+    getCategories(); 
 })
-
-
 
 </script>
 
@@ -122,7 +148,7 @@ text-align: left;
 font-weight: 700;
 
 }
-.item h2{
+.item h4{
     font-size: 36px;
 }
 .brand-box img{
@@ -140,6 +166,7 @@ border-radius: 62px;
 opacity: 0px;
 background-color: #000000;
 color: #FFFFFF;
+text-decoration: none;
 }
 .box-tittle{
     font-size: 62px;
@@ -198,7 +225,7 @@ font-weight: 700;
     border-radius: 20px;
     padding:0.2rem  0.6rem;
 }
-h2{
+h4{
     position: absolute;
 font-size: 36px;
 font-weight: 700;
@@ -207,12 +234,14 @@ text-align: left;
 color: #000000;
 z-index: 100;
 }
-.card-btn{
+
+.card-btn .btn{
+
+    padding:16px 64px 16px 64px;
     border: 1px solid #0000001A;
     border-radius: 62px;
-    padding: 10px 54px;
-    width: 218px;
 }
+
 .trending-line{
     border: 1px solid #0000001A;
 }
@@ -292,6 +321,26 @@ z-index: 100;
 .card-btn{
     width: 100%;
 }
+
+.branding-box {
+        display: flex;
+        overflow-x: auto; 
+        flex-wrap: nowrap;
+    }
+
+    .branding-box .row {
+        display: inline-flex; 
+        gap: 1rem; 
+    }
+
+    .branding-box::-webkit-scrollbar {
+        height: 8px; 
+    }
+
+    .branding-box::-webkit-scrollbar-thumb {
+        background-color: var(--accent-color); 
+        border-radius: 4px;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px){
@@ -309,7 +358,10 @@ z-index: 100;
         padding-bottom: 2rem;
     }
 
-
+    .item h4{
+    font-size: 22px;
+    
+}
 }
 
 @media (min-width: 768px) and (max-width: 991.98px){
@@ -329,6 +381,10 @@ z-index: 100;
     .box-line {
         height: 45px;
 }
+.item h4{
+    font-size: 25px;
+    
+}
 
 }
 
@@ -336,8 +392,8 @@ z-index: 100;
 .box-tittle{
     font-size: 38px;
 }
-.item h2{
-    font-size: 24px;
+.item h4{
+    font-size: 35px;
     
 }
 .item {
@@ -367,6 +423,8 @@ p{
     height: 45px;
 }
 }
+
+
 
 
 </style>

@@ -207,8 +207,11 @@ font-weight: 700px;
     }
 
 }
-@media (min-width: 768px) and (max-width: 991.98px) {
-   
+@media (min-width: 1200px) {
+   .row {
+    display: flex;
+    flex-wrap: nowrap;
+   }
 }
 
 

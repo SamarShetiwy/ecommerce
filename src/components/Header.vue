@@ -144,13 +144,17 @@ color: #000000;
     background-color:#F0F0F0;
 }
 .cart{
-  cursor: pointer;
+  cursor: pointer !important;
   position: relative;
 }
 
 .cart span{
   position: absolute;
   top:-16px;
+}
+.cart:hover{
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 

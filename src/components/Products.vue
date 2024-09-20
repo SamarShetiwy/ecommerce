@@ -1,5 +1,5 @@
 <template lang="pug">
-.card.col.col-md-3.col-lg-3.mt-2
+.card.col-8.col-sm-5.col-md-4.col-lg-3.mt-2.text-start
     div(v-if='product')  
         router-link(:to="`/product/${product.id}`")
             img.card-img-top(:src="product?.image")
@@ -101,8 +101,11 @@ color: #FF3333;
 }
 @media (max-width: 576px) { 
     .trending{
-        width: 234px;
+        width: 100%;
         
+    }
+    .price1, .price2{
+    font-size: 14px;
     }
 }
 

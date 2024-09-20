@@ -66,8 +66,8 @@ div.row.mt-2.d-flex.gap-4.p-2
                 p.card-text ""I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter."
                 div
                     p Posted on August 19, 2023
-div.card-btn.center.mt-5
-    .btn Load More Reviews  
+div.card-btn.container.center.mt-5
+    button.btn Load More Reviews     
         
 </template>
 

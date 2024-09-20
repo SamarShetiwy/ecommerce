@@ -1,7 +1,5 @@
-
 import { defineStore } from 'pinia';
 import type { DataProduct } from '../api/api';
-
 
 interface CartItem {
   product: DataProduct;
@@ -27,9 +25,22 @@ export const useCartStore = defineStore('cart', {
         item.quantity = quantity;
       }
     },
-    persist: {
-      storage: localStorage ,
-      paths: ['cartItems'],
+    removeProduct(productId: number) {
+      this.cartItems = this.cartItems.filter(item => item.product.id !== productId);
+      cartStore.$reset();
+    },
+    plusQuantity(productId: number) {
+      const item = this.cartItems.find(item => item.product.id === productId);
+      if (item) {
+        item.quantity += 1; 
+      }
+    },
+    minusQuantity(productId: number) {
+      const item = this.cartItems.find(item => item.product.id === productId);
+      if (item && item.quantity > 1) {
+        item.quantity -= 1;
+      }
+    },
   },
-  },
+  persist: true,
 });

@@ -15,7 +15,6 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 
 
-
 const app = createApp(App)
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)

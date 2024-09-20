@@ -7,8 +7,8 @@ div.container
               a(href="") Shop
               i.fa-solid.fa-angle-right
               a(href="") {{ SingleProduct?.category || 'Loading...' }}
-              i.fa-solid.fa-angle-right
-              a(href="") {{SingleProduct?.title}}
+              //- i.fa-solid.fa-angle-right
+              //- a(href="") {{SingleProduct?.title}}
 div.container.mt-4
       .div.row.container-product.d-flex.gap-3.gap-lg-0.px-3
             div.col.col-lg-6.product-img
@@ -57,8 +57,8 @@ div.container.mt-4
                       i.bi.bi-plus-lg(@click="plusQuantity()")
                       span {{ quantity }}
                       i.bi.bi-dash-lg(@click="minusQuantity()")
-                  div.col-7.add-to-cart.center
-                      a(@click="addToCart") Add To Cart
+                  div.col-7.add-to-cart.center(@click="addToCart")
+                      a Add To Cart
 
                       //- Rating & Reviews  
 div.container.mt-0.mt-sm-5.px-sm-5.px-0
@@ -87,7 +87,9 @@ div.container
     AllReviews
 .trending.mt-5
     h1.trending-tittle.center YOU MIGHT ALSO LIKE
-    products
+    div.branding-box.d-flex.mt-5.container.gap-3
+      .row.center.text-start
+          Products(v-for="product in SameProducts" :key="product.id" :product="product")
 
 </template>
 
@@ -103,8 +105,10 @@ import { useCartStore } from '../stores/cartStore';
 const SingleProduct = ref<DataProduct | null>(null);
 const route =useRoute();
 const productID =route.params.id;
+const SameProducts = ref<DataProduct[]>([]); 
 const cartStore = useCartStore();
 const quantity =ref(1);
+
 
 
 async function  getSingleProduct(productID){
@@ -119,10 +123,23 @@ async function  getSingleProduct(productID){
   }
 }
 
-onMounted(() => {
-  getSingleProduct(productID);
-  console.log('Cart items:', cartStore.cartItems);
+async function getSameCategory(category:string ) {
+  try {
+    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+    const data = await response.json();
+    SameProducts.value = data;
+    console.log(SameProducts.value);
+    // SameProducts.value = data.filter(product => product.id !== SingleProduct.value?.id).slice(0, 4); 
+  } catch (error) {
+    console.error(error);
+  }
+}
 
+onMounted(async () => {
+  await getSingleProduct(+productID);
+  if (SingleProduct.value?.category) {
+    getSameCategory(SingleProduct.value.category);
+  }
 })
 
 function plusQuantity() {
@@ -138,9 +155,7 @@ function minusQuantity() {
 
 function addToCart() {
   if (SingleProduct.value) {
-    console.log('>>>>>>>>>>>>>>:', cartStore.cartItems);
     cartStore.addToCart(SingleProduct.value, quantity.value);
-    console.log('LocalStorage ', localStorage.getItem('pinia'));
   }
 }
 
@@ -260,6 +275,9 @@ line-height: 21.6px;
 text-align: left;
 cursor: pointer;
 }
+.add-to-cart:hover{
+   transform: scale(1.1);
+}
 
 .tabs{
   padding: 0 5rem;
@@ -296,7 +314,7 @@ cursor: pointer;
 
 @media (max-width: 576px) {
   .pages a{
-    font-size: 14px;
+    font-size: 17px;
   }
   .price {
     font-size: 24px;
@@ -368,7 +386,34 @@ cursor: pointer;
 .main-image{
   width: 100%;
 }
-  }
+}
+
+
+@media (max-width: 576px) {
+    
+    .branding-box {
+      display: flex;
+      overflow-x: auto; 
+      flex-wrap: nowrap;
+      gap: 0;
+    }
+    
+    .branding-box .row {
+      display: inline-flex; 
+      gap: 1rem; 
+    }
+    
+    .branding-box::-webkit-scrollbar {
+      height: 8px; 
+    }
+    
+    .branding-box::-webkit-scrollbar-thumb {
+      background-color: var(--accent-color); 
+      border-radius: 4px;
+    }
+}
+    
+    
 
 
 

@@ -10,13 +10,14 @@ div.container
 div.container.mb-5
   div.row.cart.d-flex.gap-3.p-3.p-md-0
     div.cart-products.col.col-lg-7.col-12.p-3
-      div.cart-product.d-flex.gap-3
+      div(v-for="(item, index) in cartStore.cartItems" :key="index")
+        div.cart-product.d-flex.gap-3
           div.card-img
-            img(src="../assets/images/products/Frame 33 (1).png")
+            img(:src="item.product.image")
           div.card-description.card-body
             div.product-name.d-flex.between
-              h5  Gradient Graphic T-shirt
-              i.fa-solid.fa-trash-can.delete
+              h5 {{item.product.title}}
+              i.fa-solid.fa-trash-can.delete(@click="removeProduct(item.product.id),cartStore.cartItems.splice(index, 1)")
             div.d-flex
               p.mb-0 Size:
               span Large
@@ -24,69 +25,29 @@ div.container.mb-5
               p.mb-0 Color: 
               span White
             div.d-flex.between.cart-price
-              span $145
+              span ${{item.product.price}}
               div.div.counter.between.bg-custom.gap-md-4.gap-2
-                  i.bi.bi-plus-lg
-                  span 1
-                  i.bi.bi-dash-lg
-      .div.cart-line.my-4
-      div.cart-product.d-flex.gap-3
-          div.card-img
-            img(src="../assets/images/products/gggg.png")
-          div.card-description.card-body
-            div.product-name.d-flex.between
-              h5 Checkered Shirt 
-              i.fa-solid.fa-trash-can.delete
-            div.d-flex
-              p.mb-0 Size:
-              span Medium
-            div.d-flex
-              p.mb-0 Color: 
-              span Red
-            div.d-flex.between.cart-price
-              span $180
-              div.div.counter.between.bg-custom.gap-md-4.gap-2
-                  i.bi.bi-plus-lg
-                  span 1
-                  i.bi.bi-dash-lg
-      .div.cart-line.my-4
-      div.cart-product.d-flex.gap-3
-          div.card-img
-            img(src="../assets/images/products/Frame 33 (2).png")
-          div.card-description.card-body
-            div.product-name.d-flex.between
-              h5 Skinny Fit Jeans
-              i.fa-solid.fa-trash-can.delete
-            div.d-flex
-              p.mb-0 Size:
-              span large
-            div.d-flex
-              p.mb-0 Color: 
-              span Blue
-            div.d-flex.between.cart-price
-              span $240
-              div.div.counter.between.bg-custom.gap-md-4.gap-2
-                  i.bi.bi-plus-lg
-                  span 1
-                  i.bi.bi-dash-lg
-            
+                  i.count.bi.bi-plus-lg(@click="plusQuantity(item.product.id)")
+                  span {{item.quantity }}
+                  i.count.bi.bi-dash-lg(@click="minusQuantity(item.product.id)")
+        .div.cart-line.my-4(v-if="index < cartStore.cartItems.length - 1") 
     div.cart-products.col.col-lg-4.p-3
       div
         h3.h3 Order Summary
         div.order-Summary.mt-4.d-flex.flex-column.gap-2
           div.d-flex.between.order
             p.mb-0 Subtotal
-            span $565
+            span ${{subtotal.toFixed(2)}}
           div.d-flex.between.Discount.order
             p.mb-0 Discount (-20%)
-            span -$113
+            span -${{discount.toFixed(2)  }}
           div.d-flex.between.order
             p.mb-0 Delivery Fee
             span $15
         div.cart-line.my-3 
         div.d-flex.between.order
             p.total.mb-0 Total
-            span $467 
+            span ${{total.toFixed(2)}} 
         div.d-flex.mt-3.between.gap-2
           div.d-flex.promo-code.bg-custom.center.gap-2
             i.center.pl-2.fas.fa-tag
@@ -96,15 +57,36 @@ div.container.mb-5
         div.checkout.mt-4.center.gap-3.align-items-center 
           button Go to Checkout  
           i.fa-solid.fa-arrow-right
-
-          
-
-
-        
-    
 </template>
     
-<script lang="ts">
+<script setup lang="ts">
+import { useCartStore } from '../stores/cartStore';
+import {computed} from 'vue'
+
+const cartStore = useCartStore();
+
+const removeProduct = (productId: number) => {
+  cartStore.removeProduct(productId);
+};
+
+const plusQuantity = (productId: number) => {
+  cartStore.plusQuantity(productId);
+};
+
+const minusQuantity = (productId: number) => {
+  cartStore.minusQuantity(productId);
+};
+
+const subtotal = computed(() => {
+  return cartStore.cartItems .reduce((sum, item) => sum + (item.product.price * item.quantity), 0);});
+
+const discount = computed(() => {
+  return subtotal.value * 0.20; 
+});
+
+const total = computed(() => {
+  return subtotal.value - discount.value + 15; 
+});
 </script>
     
 <style scoped>
@@ -123,8 +105,13 @@ div.container.mb-5
   padding: 12px 20px ;
   border-radius: 62px;
 }
+.count{
+  cursor: pointer;
+
+}
 .delete{
   color: #FF3333;
+  cursor: pointer !important;
 }
 
 .card-img{
