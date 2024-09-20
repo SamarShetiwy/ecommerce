@@ -81,7 +81,7 @@ div.slider.mt-5
 </template>
 <script setup lang="ts">
 import Products from '../components/Products.vue';
-import Slider from '../components/slider.vue';
+import Slider from '../components/Slider.vue';
 import Pagination from '../components/Pagination.vue';
 import { ref , onMounted ,computed} from 'vue';
 import type {DataProduct} from '../api/api'
