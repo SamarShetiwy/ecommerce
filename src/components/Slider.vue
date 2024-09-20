@@ -4,7 +4,7 @@ div.container.between
     div.center.icons.gap-2
         i.bi.bi-arrow-left
         i.bi.bi-arrow-right
-div.row.mt-5.scroll.d-flex.gap-3
+div.row.mt-5.scroll.d-flex.gap-3.mx-0
     .customer.card.col-lg-3.col-md-4.col-sm-6.col-11.px-md-2.p-2
         .card-body.d-flex.flex-column.gap-2.mt-2
             img.card-img-star(src='../assets/images/slider-section/stars.png')

@@ -27,12 +27,12 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
                 //-    section brand
             
 .brand.bg-black.py-4.px-1
-    .row.brand-box.center.gap-lg-5.gap-md-3.gap-2.px-1.px-sm-3
-            img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/Vector.png" alt="")
-            img.img-brand2.col-5.col-md-2(src="../assets/images/brand/Vector (1).png" alt="")
-            img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/gucci-logo-1 1.png" alt="")
-            img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/Group.png" alt="")
-            img.col-4.col-sm-5.col-md-2(src="../assets/images/brand/Vector (2).png" alt="")
+    .row.mx-0.my-2.brand-box.center.gap-lg-5.gap-md-3.gap-1.px-1.px-sm-3
+            img.col-4.col-sm-5.col-md-2.p-2(src="../assets/images/brand/Vector.png" alt="")
+            img.img-brand2.col-5.col-md-2.p-2(src="../assets/images/brand/Vector (1).png" alt="")
+            img.col-4.col-sm-5.col-md-2.p-2(src="../assets/images/brand/gucci-logo-1 1.png" alt="")
+            img.col-4.col-sm-5.col-md-2.p-2(src="../assets/images/brand/Group.png" alt="")
+            img.col-4.col-sm-5.col-md-2.p-2(src="../assets/images/brand/Vector (2).png" alt="")
 
               //-    section trending 
 
@@ -48,10 +48,9 @@ div.card-btn.container.center.mt-5
 .trending-line.my-5.mx-3
 .trending.mt-2
     h1.trending-tittle.center TOP SALLING
-    div.branding-box.d-flex.mt-5.container.gap-3
-        .row.center.text-start
+    div.d-flex.mt-5.container.gap-3
+        .row.center.text-start.branding-box
             Products(v-for=" product in sortedProducts.slice(1,5)" :key="product.id" :product="product")
-
 div.card-btn.container.center.mt-5
     button.btn View All               
 
@@ -79,6 +78,7 @@ div.slider.mt-5
 
 
 </template>
+
 <script setup lang="ts">
 import Products from '../components/Products.vue';
 import Slider from '../components/Slider.vue';
@@ -263,7 +263,9 @@ z-index: 100;
 .info span, p{
     font-size: 24px;
 }
-
+.item h4{
+    font-size: 24px;
+}
 .info p{
     font-size: 12px;
 }
@@ -326,9 +328,14 @@ z-index: 100;
         display: flex;
         overflow-x: auto; 
         flex-wrap: nowrap;
+        padding: 0 2rem;
     }
 
     .branding-box .row {
+        display: inline-flex; 
+        gap: 1rem; 
+    }
+   .branding-box .row {
         display: inline-flex; 
         gap: 1rem; 
     }

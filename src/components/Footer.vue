@@ -63,6 +63,7 @@ div.footer-section.bg-custom.p-sm-5.p-2
 </script>
 
 <style lang="css" scoped>
+
 .footer{
     background-color: #000000;
     border-radius: 20px;

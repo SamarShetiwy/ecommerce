@@ -18,7 +18,7 @@ div.container.mt-4
                           img.img-fluid(:src="SingleProduct?.image")
                           img.img-fluid(:src="SingleProduct?.image")
                       div.col.col-md-7.main-image
-                          img.img-fluid(:src="SingleProduct?.image")
+                          img.img-fluid.main-image(:src="SingleProduct?.image")
             div.col.col-lg-6.d-flex.flex-column.gap-1
               div.heading-font
                 h1.h1.title {{SingleProduct?.title}}
@@ -87,8 +87,8 @@ div.container
     AllReviews
 .trending.mt-5
     h1.trending-tittle.center YOU MIGHT ALSO LIKE
-    div.branding-box.d-flex.mt-5.container.gap-3
-      .row.center.text-start
+    div.d-flex.mt-5.container.gap-3
+      .row.center.text-start.branding-box
           Products(v-for="product in SameProducts" :key="product.id" :product="product")
 
 </template>
@@ -181,9 +181,9 @@ function addToCart() {
 
   height: 100%;
 }
-.main-image{
+/* .main-image{
   width: 65%;
-}
+} */
 .img-fluid {
     max-width: 100%; 
     display: block;
@@ -347,7 +347,9 @@ cursor: pointer;
   .size span{
     font-size: 12px;
   }
-  
+  .main-image{
+    max-height: 290px;
+  }
 
   }
   
@@ -395,10 +397,10 @@ cursor: pointer;
       display: flex;
       overflow-x: auto; 
       flex-wrap: nowrap;
-      gap: 0;
+      padding: 0 2rem;
     }
     
-    .branding-box .row {
+    .branding-box  {
       display: inline-flex; 
       gap: 1rem; 
     }
