@@ -59,7 +59,7 @@ div.card-btn.container.center.mt-5
     h1.pt-1.pb-4 BROWSE BY DRESS STYLE
     div.py-0.p-sm-3.upper-section.row.center.gap-3
             .item.item1.col-sm-4.col-12
-                h4.px-4.py-md-3.py-0 {{ categories[2] }}
+                h4.px-4.py-md-3.py-0 {{ categories[1] }}
                 img(src="../assets/images/dress-style-section/1.png" alt="")
             .item.item2.col-sm-7.col-12
                 h4.px-4.py-md-3.py-0 {{ categories[0] }}

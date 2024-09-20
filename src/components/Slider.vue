@@ -4,7 +4,7 @@ div.container.between
     div.center.icons.gap-2
         i.bi.bi-arrow-left
         i.bi.bi-arrow-right
-div.row.mt-5.scroll.d-flex.gap-3.mx-0
+div.row.mt-5.scroll.d-flex.gap-3.mx-3
     .customer.card.col-lg-3.col-md-4.col-sm-6.col-11.px-md-2.p-2
         .card-body.d-flex.flex-column.gap-2.mt-2
             img.card-img-star(src='../assets/images/slider-section/stars.png')
@@ -48,7 +48,7 @@ div.row.mt-5.scroll.d-flex.gap-3.mx-0
 
 <style scoped>
 h1{
-  text-align: start;
+ text-align: start;
 }
 .icons{
     color: #000000;
@@ -66,4 +66,5 @@ h1, i{
     overflow-y: auto;
     flex-wrap: nowrap;
 }
+
 </style>

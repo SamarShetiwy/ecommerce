@@ -7,12 +7,12 @@ div.signup.bg-black
             span.ml-2
                 a.text-white(href="#") Sign Up Now
         div.offer-icon.d-none.d-md-block 
-            i.fas.fa-times    
+            i.fas.fa-times           
 div.container.p-0
     nav.navbar.container-fluid.gap-lg-4.gap-1.navbar-expand-lg.d-flex.p-3
         div.logo.d-flex.gap-2.center
           button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
-            span.navbar-toggler-icon(data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent")
+            span.navbar-toggler-icon
           router-link(to="/" class="navbar-brand")
             h1.pb-0 SHOP.CO
         .collapse.navbar-collapse(id="navbarSupportedContent").center
@@ -89,7 +89,6 @@ const totalQuantity = computed(() => {
 .icons-header i {
   color:#000000;
   font-weight: bold;
-   
 }
 
 .head p,
