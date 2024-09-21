@@ -1,7 +1,7 @@
 <template lang="pug">
 div.container.line
 div.container
-    div.pages.d-flex.gap-3.align-items-center.py-3
+    div.pages.d-flex.gap-3.align-items-center.py-3.pl-1
         router-link.active(to="/") Home
         i.fa-solid.fa-angle-right
         a(href="") Cart
@@ -200,17 +200,17 @@ font-weight: 700;
 @media (max-width: 576px) {
    
   .product-name h5 {
-    font-size: 16px;
+    font-size: 14px;
     text-align: start;
   }
   p, span{
     font-size: 12px;
   }
   .cart-price span{
-    font-size: 20px;
+    font-size: 14px;
   }
   .counter {
-   padding: 8px 20px;
+   padding: 8px 16px;
     
   }
   .card-body{

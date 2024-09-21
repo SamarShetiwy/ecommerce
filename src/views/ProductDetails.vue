@@ -1,7 +1,7 @@
 <template lang="pug">
 div.container
     div.d-flex.gap-3(v-if='SingleProduct') 
-        div.pages.d-flex.gap-2.align-items-center.p-3
+        div.pages.d-flex.gap-2.align-items-center.py-3.pl-1
               router-link(to="/") Home
               i.fa-solid.fa-angle-right
               a(href="") Shop

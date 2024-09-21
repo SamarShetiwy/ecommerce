@@ -8,14 +8,14 @@ div.signup.bg-black
                 a.text-white(href="#") Sign Up Now
         div.offer-icon.d-none.d-md-block 
             i.fas.fa-times           
-div.container.p-0
-    nav.navbar.container-fluid.gap-lg-4.gap-1.navbar-expand-lg.d-flex.p-3
+div.container.px-0
+    nav.navbar.container-fluid.gap-lg-4.gap-1.navbar-expand-lg.d-flex.py-3.pe-3.pl-1
         div.logo.d-flex.gap-2.center
           button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" :aria-expanded="hidden" aria-label="Toggle navigation" @click.prevent="hidden =! hidden")
             span.navbar-toggler-icon
           router-link(to="/" class="navbar-brand")
             h1.pb-0 SHOP.CO
-        .collapse.navbar-collapse(:class="{show: hidden }" id="").center
+        .collapse.navbar-collapse(:class="{show: hidden }" id="")
           ul.navbar-nav.mb-2.mb-lg-0.d-flex
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle(href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
@@ -91,7 +91,12 @@ const totalQuantity = computed(() => {
   color:#000000;
   font-weight: bold;
 }
-
+.navbar-collapse {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
 .head p,
 .head span,
 .offer-icon {
@@ -107,6 +112,7 @@ text-align: left;
 color: #000000;
 
 }
+
 
 .has-search .form-control {
     padding-left: 2.5rem;
@@ -170,6 +176,30 @@ color: #000000;
   .navbar-toggler-icon {
     width: 28px;
   }
+/* .navbar{
+  background-color: #F0F0F0;
+} */
+  .navbar-collapse {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  align-items: end;
+  padding: 0.5rem 1.7rem;
+  color: #F0F0F0;
+  position: fixed;
+  background-color:#ffffff;
+  width:45%;
+  top:6rem;
+  right:0;
+  z-index: 1000;
+  border-left: 20px solid #fff;
+  border-top-left-radius: 20px; 
+  border-bottom-left-radius: 20px; 
+  }
+.icons-header{
+  margin-left: 0.7rem;
+  color: #F0F0F0;
+}
 }
 
 @media(min-width: 768px) and (max-width: 991.98px){

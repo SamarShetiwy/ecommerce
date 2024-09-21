@@ -185,6 +185,9 @@ font-weight: 700px;
         flex-wrap: nowrap;
         margin-right: 0;
     }
+    .pargraph,.details{
+        font-size: 15px;
+    }
     
     .copyrights{
         font-size:14px;

@@ -5,7 +5,7 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
             .hero-box.d-flex.flex-column.gap-3
                 h1.box-tittle FIND CLOTHES THAT MATCHES YOUR STYLE
                 p.box-text Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
-                button.btn.box-btn.center  Shop Now
+                button.btn.box-btn.center.shop  Shop Now
             .box-info.d-flex.align-items-start.gap-3
                 .info.text-start 
                     span +200
@@ -158,7 +158,7 @@ font-weight: 700;
    width:110px;
 }
 
-.box-btn{
+.shop{
 width:210px;
 padding: 1rem;
 gap: 12px;
@@ -167,6 +167,13 @@ opacity: 0px;
 background-color: #000000;
 color: #FFFFFF;
 text-decoration: none;
+}
+.shop:hover{
+    opacity: 1;
+    transform: scale(1); 
+    border: #0d6efd solid 2px;
+    color: #000000;
+
 }
 .box-tittle{
     font-size: 62px;
@@ -283,7 +290,7 @@ z-index: 100;
 }
 
 .dress-style h1{
-    font-size: 30px;
+    font-size: 28px;
     line-height: 36px;
     width: 246px;
 }
