@@ -11,11 +11,11 @@ div.signup.bg-black
 div.container.p-0
     nav.navbar.container-fluid.gap-lg-4.gap-1.navbar-expand-lg.d-flex.p-3
         div.logo.d-flex.gap-2.center
-          button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+          button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" :aria-expanded="hidden" aria-label="Toggle navigation" @click.prevent="hidden =! hidden")
             span.navbar-toggler-icon
           router-link(to="/" class="navbar-brand")
             h1.pb-0 SHOP.CO
-        .collapse.navbar-collapse(id="navbarSupportedContent").center
+        .collapse.navbar-collapse(:class="{show: hidden }" id="").center
           ul.navbar-nav.mb-2.mb-lg-0.d-flex
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle(href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
@@ -46,9 +46,10 @@ div.container.p-0
 
 <script setup lang="ts">
 import { useCartStore } from '../stores/cartStore';
-import { computed} from 'vue';
+import { ref ,computed} from 'vue';
 
 const cartStore = useCartStore();
+const hidden =ref (false);
 
 const totalQuantity = computed(() => {
   return cartStore.cartItems.reduce((sum, item) => sum + item.quantity, 0);
