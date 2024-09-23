@@ -61,9 +61,14 @@ div.container.mb-5
     
 <script setup lang="ts">
 import { useCartStore } from '../stores/cartStore';
-import {computed} from 'vue'
+import {computed , onMounted} from 'vue'
 
 const cartStore = useCartStore();
+
+
+onMounted(() => {
+  cartStore.FetchCartItems();
+});
 
 const removeProduct = (productId: number) => {
   cartStore.removeProduct(productId);

@@ -55,8 +55,9 @@ a, button, .card-btn {
 }
 .nav-item:hover {
   color: var(--contrast-color);
-  transform: scale(1.1); 
-  background-color: var(--accent-color);
+  transform: scale(1); 
+  transition: color 0.3s, transform 0.3s;
+  font-weight: bold;
 }
 .size:hover{
   color: var(--contrast-color);

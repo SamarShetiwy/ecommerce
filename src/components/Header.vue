@@ -38,28 +38,51 @@ div.container.px-0
               i.bi.bi-search.w-24.h-24.d-block.d-md-none
               router-link(to="/Cart")
                   div.d-flex.flex-column.mb-0.cart
-                    span.text-red.absolute {{totalQuantity}}
-                    i.bi.bi-cart.w-24.h-24 
+                        span.badge-cart {{ cartStore.totalQuantity }}
+                        i.bi.bi-cart.w-24.h-24
               i.bi.bi-person-circle.w-24.h-24
 //- div.container.line
 </template>
 
 <script setup lang="ts">
 import { useCartStore } from '../stores/cartStore';
-import { ref ,computed} from 'vue';
+import { ref} from 'vue';
 
 const cartStore = useCartStore();
 const hidden =ref (false);
-
-const totalQuantity = computed(() => {
-  return cartStore.cartItems.reduce((sum, item) => sum + item.quantity, 0);
-});
 
 
 
 </script>
 
 <style lang="css" scoped>
+.cart {
+  cursor: pointer !important;
+  position: relative;
+  cursor: pointer;
+}
+
+
+.cart:hover{
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+
+.badge-cart {
+  position: absolute;
+  top: -16px;
+  right: -10px; 
+  background-color: red; 
+  color: white; 
+  border-radius: 50%; 
+  padding: 4px 8px; 
+  font-size: 12px; 
+  min-width: 20px; 
+  text-align: center; 
+  line-height: 1; 
+}
+
 
 .text-red {
   color: red;
@@ -150,19 +173,6 @@ color: #000000;
     color: #00000066;
     background-color:#F0F0F0;
 }
-.cart{
-  cursor: pointer !important;
-  position: relative;
-}
-
-.cart span{
-  position: absolute;
-  top:-16px;
-}
-.cart:hover{
-  transform: scale(1.5);
-  cursor: pointer;
-}
 
 
 @media (max-width: 576px) { 
@@ -179,7 +189,41 @@ color: #000000;
 /* .navbar{
   background-color: #F0F0F0;
 } */
-  .navbar-collapse {
+.navbar-collapse {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  align-items: end;
+  padding: 0.5rem 1.7rem;
+  color: #F0F0F0;
+  position: fixed;
+  background-color:#ffffff;
+  width:45%;
+  top:6rem;
+  right:0;
+  z-index: 1000;
+  border-left: 20px solid #fff;
+  border-top-left-radius: 20px; 
+  border-bottom-left-radius: 20px; 
+  }
+.icons-header{
+  margin-left: 0.7rem;
+  color: #F0F0F0;
+}
+  
+}
+
+@media(min-width: 768px) and (max-width: 991.98px){
+  .has-search{
+     width: 300px;
+  }
+    
+}
+@media(min-width: 992px) and (max-width: 1199.98px){
+  .has-search{
+     width: 250px;
+  }
+    .navbar-collapse {
   display: flex;
   justify-content: end;
   text-align: end;
@@ -202,19 +246,8 @@ color: #000000;
 }
 }
 
-@media(min-width: 768px) and (max-width: 991.98px){
-  .has-search{
-     width: 300px;
-  }
-    
-}
-@media(min-width: 992px) and (max-width: 1199.98px){
-  .has-search{
-     width: 250px;
-  }
-    
-}
+@media(max-width: 765px){
 
-
+}
 
 </style>

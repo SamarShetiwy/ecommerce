@@ -40,17 +40,17 @@ div.hero-section-parent.bg-custom.d-flex-gap-5
     h1.trending-tittle.center NEW ARRIVALS
     div.d-flex.mt-5.container.gap-3
         .row.center.text-start.branding-box
-            Products(v-for=" product in paginatedProducts" :key="product.id" :product="product")
+            Products(v-for=" product in ViewProducts" :key="product.id" :product="product")
 .container.center.gap-2.my-3
-    Pagination(:current-page="currentPage" :total-products="totalProducts" @update:currentPage="handlePageChange") 
+    //- Pagination(:current-page="currentPage" :total-products="totalProducts" @update:currentPage="handlePageChange") 
 div.card-btn.container.center.mt-5
-    button.btn View All    
+    button.btn( @click="loadMoreProducts") View All 
 .trending-line.my-5.mx-3
 .trending.mt-2
     h1.trending-tittle.center TOP SALLING
     div.d-flex.mt-5.container.gap-3
         .row.center.text-start.branding-box
-            Products(v-for=" product in sortedProducts.slice(1,5)" :key="product.id" :product="product")
+            Products(v-for=" product in sortedProducts" :key="product.id" :product="product")
 div.card-btn.container.center.mt-5
     button.btn View All               
 
@@ -88,16 +88,18 @@ import type {DataProduct} from '../api/api'
 
 
 const products =ref([]);
-const currentPage = ref<number>(1);
-const itemsPerPage = 4; 
-const totalProducts = computed(() => products.value.length);
+const limit=ref(4);
+const ViewProducts = computed(() => products.value.slice(0, limit.value));
+// const currentPage = ref<number>(1);
+// const itemsPerPage = 4; 
+// const totalProducts = computed(() => products.value.length);
 const categories =ref([]);
 
 
 
 async function getAllProducts() {
     try {
-        const response=await fetch('https://fakestoreapi.com/products');
+        const response=await fetch(`https://fakestoreapi.com/products?limit=${limit.value}`)
         const data= await response.json();
         products.value = data;
         // console.log(products.value);
@@ -106,18 +108,25 @@ async function getAllProducts() {
     }
 }
 
-const paginatedProducts = computed(() => {
-  const startIndex = (currentPage.value - 1) * itemsPerPage;
-    return products.value.slice(startIndex, startIndex + itemsPerPage);
-});
+function loadMoreProducts() {
+  limit.value += 4; 
+  getAllProducts(); 
+}
 
-const handlePageChange = (page: number) => {
-    // console.log(page);
-    currentPage.value = +page;
-};
+
+
+// const paginatedProducts = computed(() => {
+//   const startIndex = (currentPage.value - 1) * itemsPerPage;
+//     return products.value.slice(startIndex, startIndex + itemsPerPage);
+// });
+
+// const handlePageChange = (page: number) => {
+//     // console.log(page);
+//     currentPage.value = +page;
+// };
 
 const sortedProducts = computed(() => {
-    return products.value.sort((a, b) => b.rate - a.rate);
+    return products.value.slice().sort((a, b) => a.rate - b.rate);
 });
 
 

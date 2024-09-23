@@ -144,7 +144,6 @@ onMounted(async () => {
 
 function plusQuantity() {
   quantity.value++;
-  console.log('Quantity after decrement:', quantity.value);
 }
 
 function minusQuantity() {

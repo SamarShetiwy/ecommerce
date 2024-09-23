@@ -19,6 +19,28 @@ export const useCartStore = defineStore('cart', {
         this.cartItems.push({ product, quantity });
       }
     },
+    async FetchCartItems() {
+      try {
+          const cartsResponse = await fetch('https://fakestoreapi.com/carts');
+          const productsResponse = await fetch('https://fakestoreapi.com/products');
+          const carts = await cartsResponse.json();
+          const products = await productsResponse.json();
+            this.cartItems = carts.flatMap(cart => 
+              cart.products.map(product => {
+                  const productDetails = products.find(p => p.id === product.productId);
+                  return {
+                      product: productDetails,
+                      quantity: product.quantity,
+                  };
+              })
+          );
+  
+          console.log(this.cartItems);
+      } catch (error) {
+          console.error('Error fetching cart items', error);
+      }
+  
+  },
     updateQuantity(productId: number, quantity: number) {
       const item = this.cartItems.find(item => item.product.id === productId);
       if (item) {
@@ -27,7 +49,7 @@ export const useCartStore = defineStore('cart', {
     },
     removeProduct(productId: number) {
       this.cartItems = this.cartItems.filter(item => item.product.id !== productId);
-      cartStore.$reset();
+      // cartStore.$reset();
     },
     plusQuantity(productId: number) {
       const item = this.cartItems.find(item => item.product.id === productId);
@@ -42,5 +64,11 @@ export const useCartStore = defineStore('cart', {
       }
     },
   },
+  getters: {
+      totalQuantity: (state) => {
+        return state.cartItems.reduce((total, item) => total + item.quantity, 0);
+  },
+  
   persist: true,
+}
 });
