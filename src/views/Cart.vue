@@ -65,11 +65,6 @@ import {computed , onMounted} from 'vue'
 
 const cartStore = useCartStore();
 
-
-onMounted(() => {
-  cartStore.FetchCartItems();
-});
-
 const removeProduct = (productId: number) => {
   cartStore.removeProduct(productId);
 };

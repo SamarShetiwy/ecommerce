@@ -36,7 +36,7 @@ div.container.px-0
             input(type="text" class="form-control" placeholder="Search")
         div.icons-header.center.gap-2.gap-md-2
               i.bi.bi-search.w-24.h-24.d-block.d-md-none
-              router-link(to="/Cart")
+              router-link(to="/cart")
                   div.d-flex.flex-column.mb-0.cart
                         span.badge-cart {{ cartStore.totalQuantity }}
                         i.bi.bi-cart.w-24.h-24
@@ -46,12 +46,15 @@ div.container.px-0
 
 <script setup lang="ts">
 import { useCartStore } from '../stores/cartStore';
-import { ref} from 'vue';
+import { ref , onMounted} from 'vue';
+
 
 const cartStore = useCartStore();
 const hidden =ref (false);
 
-
+onMounted(() => {
+  cartStore.FetchCartItems();
+});
 
 </script>
 
